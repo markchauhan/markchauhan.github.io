@@ -1,199 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mark Chauhan — Engineer</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mark Chauhan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 
-  <!-- ───── SIDEBAR NAV ───── -->
-  <aside class="sidebar">
-    <div class="sidebar-top">
-      <div class="logo">MC</div>
+<div class="grain"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <span class="nav-name">MC</span>
+  <div class="nav-links">
+    <a href="#about">about</a>
+    <a href="#experience">experience</a>
+    <a href="#projects">projects</a>
+    <a href="#coursework">coursework</a>
+    <a href="#contact">contact</a>
+    <a href="https://github.com/markchauhan" target="_blank" class="nav-gh">github ↗</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-eyebrow">
+    <span class="dot"></span>
+    <span>Multidisciplinary Engineer</span>
+    <span class="dot"></span>
+    <span>Northwestern University '25</span>
+    <span class="dot"></span>
+    <span>Boston, MA</span>
+  </div>
+
+  <h1 class="hero-heading">Mark<br><em>Chauhan</em></h1>
+
+  <div class="hero-right">
+    <p class="hero-desc">
+      B.S. Computer Engineering + B.S. Mechanical Engineering, Minor in AI & Music.
+      I work across the full hardware–software stack — embedded firmware, low-latency systems, FPGA design, robotics, and ML. Currently at Hyannis Port Research building trading infrastructure in C. Interested in roles at the intersection of <strong>hardware and low-level software</strong>: robotics, trading systems, ML hardware, and embedded systems.
+    </p>
+    <div class="stack-row">
+      <span>C</span><span>C++</span><span>Python</span><span>Verilog</span><span>ARM Assembly</span><span>FPGA</span><span>PIC32</span><span>Linux</span><span>MATLAB</span><span>React Native</span><span>SQL</span>
     </div>
-    <nav class="sidebar-nav">
-      <a href="#about"      class="nav-link" data-section="about">About</a>
-      <a href="#experience" class="nav-link" data-section="experience">Experience</a>
-      <a href="#projects"   class="nav-link" data-section="projects">Projects</a>
-      <a href="#contact"    class="nav-link" data-section="contact">Contact</a>
-    </nav>
-    <div class="sidebar-socials">
-      <a href="https://github.com/markchauhan" target="_blank" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-      </a>
-      <a href="https://linkedin.com/in/markchauhan" target="_blank" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      </a>
+    <div class="stack-row" style="margin-top:8px">
+      <span>SolidWorks</span><span>Siemens NX</span><span>Eagle PCB</span><span>Cadence</span><span>FEA</span><span>Wireshark</span>
     </div>
-  </aside>
+  </div>
+</section>
 
-  <!-- ───── MAIN CONTENT ───── -->
-  <main class="content">
+<div class="divider"></div>
 
-    <!-- HERO -->
-    <section id="about" class="section hero-section">
-      <div class="hero-tag">Systems Engineer</div>
-      <h1 class="hero-name">Mark<br>Chauhan.</h1>
-      <p class="hero-sub">I build things that run <em>fast</em> and close to the metal —<br>from microsecond trading pipelines to embedded firmware and FPGAs.</p>
-      <p class="hero-body">
-        Northwestern CS/ME grad. Currently at <span class="accent">Hyannis Port Research</span> building low-latency trading infrastructure in C. My work spans the full hardware–software stack: real-time systems, FPGA accelerators, MCU firmware, PCB design, and performance-critical networking.
-      </p>
-      <div class="hero-pills">
-        <span>C / C++</span>
-        <span>Verilog / FPGA</span>
-        <span>Embedded Firmware</span>
-        <span>Real-time Systems</span>
-        <span>PCB Design</span>
-        <span>Python</span>
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>Experience</h2>
+  </div>
+
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-year">2025 — now</div>
+        <div class="exp-company">Hyannis Port Research</div>
+        <div class="exp-location">Needham, MA</div>
       </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-      <h2 class="section-label">Experience</h2>
-
-      <div class="timeline">
-
-        <div class="timeline-item">
-          <div class="timeline-meta">
-            <span class="timeline-date">2024 — Present</span>
-            <span class="timeline-co">Hyannis Port Research</span>
-          </div>
-          <div class="timeline-body">
-            <h3>Software Engineer I</h3>
-            <p>Building low-latency trading infrastructure in C. Work includes FIX/INET protocol handling, multi-threaded pipeline architecture, and microsecond-level performance tuning for live market data and order execution.</p>
-            <div class="tags"><span>C</span><span>FIX/INET</span><span>Multithreading</span><span>Low-latency</span></div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-meta">
-            <span class="timeline-date">2023</span>
-            <span class="timeline-co">Honeywell</span>
-          </div>
-          <div class="timeline-body">
-            <h3>Firmware Engineering Intern</h3>
-            <p>Developed PID control logic and BACnet firmware for building automation systems. Used Wireshark for protocol-level debugging. Delivered a Python-based testing framework that streamlined hardware validation.</p>
-            <div class="tags"><span>C++</span><span>Python</span><span>BACnet</span><span>PID Control</span><span>Wireshark</span></div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-meta">
-            <span class="timeline-date">2022 — 2023</span>
-            <span class="timeline-co">Northwestern Haptics Lab</span>
-          </div>
-          <div class="timeline-body">
-            <h3>Research Engineer</h3>
-            <p>Designed and built an MCU-driven haptic feedback interface from scratch — PCB layout in Eagle, embedded firmware on a PIC32, and hardware-software integration testing.</p>
-            <div class="tags"><span>PIC32</span><span>Eagle PCB</span><span>Embedded C</span><span>Haptics</span></div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-meta">
-            <span class="timeline-date">2022</span>
-            <span class="timeline-co">The Garage @ Northwestern</span>
-          </div>
-          <div class="timeline-body">
-            <h3>Prototyping Engineer</h3>
-            <p>Led hardware prototyping for robotics and medical device concepts. Focused on rapid iteration from concept to functional physical prototype.</p>
-            <div class="tags"><span>Robotics</span><span>Medical Devices</span><span>Prototyping</span></div>
-          </div>
-        </div>
-
+      <div class="exp-right">
+        <div class="exp-title">Software Engineer I</div>
+        <p>Building production low-latency trading infrastructure in C. Implemented FIX and INET protocol handlers, designed multi-threaded memory-managed pipelines processing high message volumes across multiple clients and exchanges. Built a simulation and testing framework for trading middleware.</p>
+        <div class="chips"><span>C</span><span>FIX/INET</span><span>Multithreading</span><span>Memory Management</span><span>Low-latency</span><span>Trading Systems</span></div>
       </div>
-    </section>
+    </div>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <h2 class="section-label">Projects</h2>
-      <div class="projects-grid">
-
-        <a href="https://github.com/markchauhan/cpe361" target="_blank" class="project-card">
-          <div class="project-top">
-            <span class="project-icon">⬡</span>
-            <span class="project-arrow">↗</span>
-          </div>
-          <h3>RISC-V Pipelined CPU</h3>
-          <p>5-stage pipelined processor implemented in Verilog. Handles data/control hazards with forwarding logic and branch prediction.</p>
-          <div class="tags"><span>Verilog</span><span>FPGA</span><span>Computer Architecture</span></div>
-        </a>
-
-        <a href="https://github.com/markchauhan/me433" target="_blank" class="project-card">
-          <div class="project-top">
-            <span class="project-icon">▣</span>
-            <span class="project-arrow">↗</span>
-          </div>
-          <h3>FPGA Matrix Accelerator</h3>
-          <p>Hardware accelerator for matrix multiplication on an FPGA. Parallelized MAC operations with custom memory architecture for throughput optimization.</p>
-          <div class="tags"><span>Verilog</span><span>FPGA</span><span>HLS</span></div>
-        </a>
-
-        <a href="https://github.com/markchauhan/cs211" target="_blank" class="project-card">
-          <div class="project-top">
-            <span class="project-icon">◈</span>
-            <span class="project-arrow">↗</span>
-          </div>
-          <h3>SQL Compiler in C</h3>
-          <p>A from-scratch SQL query compiler in C. Implements lexing, parsing, and query execution with a custom B-tree index structure.</p>
-          <div class="tags"><span>C</span><span>Compilers</span><span>Data Structures</span></div>
-        </a>
-
-        <a href="https://github.com/markchauhan/me449" target="_blank" class="project-card">
-          <div class="project-top">
-            <span class="project-icon">◎</span>
-            <span class="project-arrow">↗</span>
-          </div>
-          <h3>youBot Mobile Manipulation</h3>
-          <p>Full-stack robot motion planning and control for a KUKA youBot — trajectory generation, inverse kinematics, and task-space control.</p>
-          <div class="tags"><span>Python</span><span>Robotics</span><span>Controls</span></div>
-        </a>
-
-        <a href="https://github.com/markchauhan/me315" target="_blank" class="project-card">
-          <div class="project-top">
-            <span class="project-icon">◻</span>
-            <span class="project-arrow">↗</span>
-          </div>
-          <h3>P&G IoT System</h3>
-          <p>End-to-end IoT sensing and control system for an industrial partner. Sensor fusion, embedded firmware, and cloud data pipeline.</p>
-          <div class="tags"><span>Embedded C</span><span>IoT</span><span>Sensors</span></div>
-        </a>
-
-        <a href="https://github.com/markchauhan/cs349" target="_blank" class="project-card">
-          <div class="project-top">
-            <span class="project-icon">◇</span>
-            <span class="project-arrow">↗</span>
-          </div>
-          <h3>CCHS Disease Classifier</h3>
-          <p>ML classifier for congenital central hypoventilation syndrome using genomic feature engineering and ensemble methods.</p>
-          <div class="tags"><span>Python</span><span>ML</span><span>Genomics</span></div>
-        </a>
-
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-year">2024</div>
+        <div class="exp-company">Honeywell</div>
+        <div class="exp-location">Acton, MA</div>
       </div>
-    </section>
+      <div class="exp-right">
+        <div class="exp-title">Embedded Software Engineering Intern</div>
+        <p>Designed and integrated an upgraded feedback control system for HVAC valve control in critical spaces (labs and hospitals). Developed firmware in C++ and Python interfacing with valve controllers, debugged BACnet network protocol communications using Wireshark, and delivered a cost-effective sensor redesign. Presented upgrade reports to five global engineering teams.</p>
+        <div class="chips"><span>C++</span><span>Python</span><span>BACnet</span><span>PID Control</span><span>Wireshark</span><span>CAD</span><span>Firmware</span></div>
+      </div>
+    </div>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section contact-section">
-      <h2 class="section-label">Contact</h2>
-      <p class="contact-intro">
-        I'm open to roles in <span class="accent">embedded systems</span>, <span class="accent">trading infrastructure</span>, and <span class="accent">hardware-software integration</span>. If you're working on something at the edge of performance — let's talk.
-      </p>
-      <a href="mailto:mark@example.com" class="contact-btn">Get in touch ↗</a>
-      <p class="contact-note">Northwestern University — B.S. Computer Engineering + B.S. Mechanical Engineering, Minor in AI & Music</p>
-    </section>
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-year">2023 — 2024</div>
+        <div class="exp-company">Northwestern Haptics Lab &<br>Querrey Simpson Bioelectronics</div>
+        <div class="exp-location">Evanston, IL</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">Undergraduate Researcher</div>
+        <p>Engineered a haptic interface simulating textures using a multi-actuator pin array — from PCB layout in Eagle through embedded firmware on a PIC32. Also fabricated flexible bioelectronic sensors for body-movement tracking, designing circuits in Autodesk Eagle.</p>
+        <div class="chips"><span>PIC32</span><span>Eagle PCB</span><span>Embedded C</span><span>Haptics</span><span>Bioelectronics</span><span>Soldering</span></div>
+      </div>
+    </div>
 
-    <footer class="footer">
-      <span>Built by Mark Chauhan · <a href="https://github.com/markchauhan/markchauhan.github.io" target="_blank">Source</a></span>
-    </footer>
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-year">2023</div>
+        <div class="exp-company">ORCO Robotics</div>
+        <div class="exp-location">Evanston, IL</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">Embedded Systems Developer</div>
+        <p>Directed embedded systems development for a robotic prosthetic arm, engineering user-input control systems and integrating software with hardware actuators using Arduino.</p>
+        <div class="chips"><span>Arduino</span><span>Embedded C</span><span>Robotics</span><span>Prosthetics</span></div>
+      </div>
+    </div>
 
-  </main>
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-year">2022 — 2024</div>
+        <div class="exp-company">The Garage @ Northwestern</div>
+        <div class="exp-location">Evanston, IL</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">Engineer — Robotics & Medical Devices</div>
+        <p>Supported prototyping and early-stage testing for student-led startups: robotic arms, smart glucometers, and child-safety wall outlet protectors. Designed mechanical and electronic components in SolidWorks. Collaborated with startup CEOs and presented design refinements to full teams.</p>
+        <div class="chips"><span>SolidWorks</span><span>Prototyping</span><span>Robotics</span><span>Medical Devices</span></div>
+      </div>
+    </div>
 
-  <script src="js/main.js"></script>
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-year">2021 — 2022</div>
+        <div class="exp-company">Advanced Quantum Materials Lab</div>
+        <div class="exp-location">Hoboken, NJ</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">Student Researcher</div>
+        <p>Researched carbon-nanotube flexible electronics for motion sensing. Analyzed CNT sensors to characterize leg movement and presented findings on 3D-printed circuit boards using graphene and CNT growth.</p>
+        <div class="chips"><span>Carbon Nanotubes</span><span>Flexible Electronics</span><span>Sensors</span><span>Research</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2>Projects</h2>
+  </div>
+
+  <div class="projects-grid">
+
+    <a class="proj-card featured" href="https://github.com/markchauhan/cpe303" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">Digital Design · Verilog · FPGA</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>RISC-V Pipelined CPU</h3>
+      <p>Five-stage pipelined processor in Verilog capable of executing the full RV32I instruction set. Implements hazard handling via data forwarding, pipeline stalls, and control-flow flushes — no NOP padding needed. Optimized pipeline stage balance for maximum clock rate. Validated with exhaustive edge-case testing in Xcelium.</p>
+      <div class="chips"><span>Verilog</span><span>RISC-V</span><span>Pipeline</span><span>Hazard Detection</span><span>Xcelium</span></div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/markchauhan/cpe303" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">Hardware · Verilog</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>Matrix Multiplication on FPGA</h3>
+      <p>Accelerated matrix multiplication on a RISC-V processor using custom vector instructions in Verilog. Simulated with Xcelium and synthesized with Genus for timing/area reports.</p>
+      <div class="chips"><span>Verilog</span><span>FPGA</span><span>RISC-V</span><span>Xcelium</span><span>Genus</span></div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/markchauhan/cpe303" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">Digital Design · Verilog</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>ALU & MAC Module</h3>
+      <p>Arithmetic Logic Unit and Multiply-Accumulate module in Verilog. Simulated and synthesized with Xcelium and Genus to verify correctness and read timing/area reports.</p>
+      <div class="chips"><span>Verilog</span><span>ALU</span><span>MAC</span><span>Xcelium</span><span>Genus</span></div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/markchauhan/me433" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">Embedded Firmware · C / Python</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>Advanced Mechatronics System</h3>
+      <p>Bare-metal embedded systems on PIC32: SPI DAC, I²C OLED, IMU integration, UART comms, PWM motor control, and DSP signal processing. Built a Python CV pipeline for camera-based navigation.</p>
+      <div class="chips"><span>PIC32</span><span>C</span><span>SPI</span><span>I²C</span><span>UART</span><span>PWM</span><span>DSP</span><span>Python</span></div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/markchauhan/me333" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">Control Systems · C</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>Intelligent Motor Driver</h3>
+      <p>Closed-loop motor control driven by a PC UI via USB. PI position and current controllers, quadrature encoder feedback, and real-time interactive tuning. MATLAB plots validated step response.</p>
+      <div class="chips"><span>C</span><span>PI Controller</span><span>Encoders</span><span>Current Sensing</span><span>MATLAB</span></div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/markchauhan/cs211" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">Systems Software · C / C++</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>SQL Compiler (SimpleSQL)</h3>
+      <p>From-scratch SQL execution environment in C/C++. Lexer tokenizes input → parser builds AST → executor runs queries against a linked-list-of-arrays store. Unit tested with Google Test.</p>
+      <div class="chips"><span>C</span><span>C++</span><span>Lexing</span><span>Parsing</span><span>AST</span><span>Google Test</span></div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/markchauhan/cs211" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">Algorithms · C++</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>Open Street Map Navigator</h3>
+      <p>Campus navigation system for Northwestern's Evanston campus. Builds a weighted graph from OSM footway data and finds shortest paths between buildings. Refactored for runtime efficiency.</p>
+      <div class="chips"><span>C++</span><span>Graph Theory</span><span>Dijkstra</span><span>OSM</span></div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/markchauhan/me314" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">Robotics · Python</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>youBot Mobile Manipulation</h3>
+      <p>Autonomous pick-and-place with a KUKA youBot. Full pipeline: trajectory generation, FK/IK, odometry, and PI feedback control. Simulated in CoppeliaSim.</p>
+      <div class="chips"><span>Python</span><span>Robotics</span><span>IK/FK</span><span>Feedback Control</span><span>CoppeliaSim</span></div>
+    </a>
+
+    <a class="proj-card featured" href="https://github.com/markchauhan/cs211" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">Machine Learning · Python</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>CCHS Genetic Disease Classifier</h3>
+      <p>ML diagnostic tool for Congenital Central Hypoventilation Syndrome using 67-point facial landmark vectors. Both a vanilla SVM and a custom 3-layer neural network achieved >85% accuracy and >95% precision — a cost-effective alternative to expensive PHOX2B genetic testing.</p>
+      <div class="chips"><span>Python</span><span>PyTorch</span><span>SVM</span><span>scikit-learn</span><span>Neural Networks</span><span>Medical AI</span></div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/markchauhan/me398" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">IoT · Embedded · Capstone</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>P&G IoT Consumer Product</h3>
+      <p>Senior capstone with Procter & Gamble. Led embedded systems integration and data tracking for an IoT-enabled consumer electronics product. Full hardware-software co-design with a senior team.</p>
+      <div class="chips"><span>IoT</span><span>Embedded Systems</span><span>C</span><span>Sensors</span><span>Data Tracking</span></div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/markchauhan/me314" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">Simulation · Python</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>Machine Dynamics Simulations</h3>
+      <p>Double pendulum and biomechanical split simulations via Lagrangian mechanics. Animated in Python/Colab with real-time multi-body dynamics rendering.</p>
+      <div class="chips"><span>Python</span><span>Lagrangian Mechanics</span><span>Simulation</span><span>Animation</span></div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/markchauhan/me314" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">Signal Processing · MATLAB</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>Audio Compression Algorithm</h3>
+      <p>Frequency-domain audio compression in MATLAB. Swept cutoff frequency to find optimal average confidence threshold (~0.93 at 3kHz). Validated against reference signals.</p>
+      <div class="chips"><span>MATLAB</span><span>DSP</span><span>FFT</span><span>Signal Processing</span></div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/markchauhan/me315" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">Mechanical Design · CAD / FEA</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>Three-Shaft Gear Transmission</h3>
+      <p>Designed a gear transmission reducing 2700 rpm → 400 rpm at 60kW. Full force analysis, stress calculations, and bearing selection for 99% reliability over a 5-year lifespan. Optimized for compactness and cost.</p>
+      <div class="chips"><span>SolidWorks</span><span>FEA</span><span>Gear Design</span><span>Stress Analysis</span></div>
+    </a>
+
+    <a class="proj-card" href="https://github.com/markchauhan/me315" target="_blank">
+      <div class="proj-header">
+        <span class="proj-cat">Manufacturing · Siemens NX / CAD</span>
+        <span class="proj-arrow">↗</span>
+      </div>
+      <h3>CNC Sensor Bracket + Fabrication</h3>
+      <p>Sensor bracket with integrated holder in Siemens NX, validated with FEA and physical testing. Fabrication projects: sand-cast anvil, milled ink-jet mold, and reverse-engineered collet via metrology and SolidWorks.</p>
+      <div class="chips"><span>Siemens NX</span><span>FEA</span><span>SolidWorks</span><span>Sand Casting</span><span>Milling</span><span>Metrology</span></div>
+    </a>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LEADERSHIP -->
+<section class="section" id="leadership">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2>Leadership</h2>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-year">2024 — 2025</div>
+        <div class="exp-company">Northwestern University</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">Teaching Assistant — Mechatronics & Biomedical Circuits</div>
+        <p>Supported instruction of ME 333 (Mechatronics) and BME 308 (Biomedical Circuits). Held office hours, graded labs, and mentored students through embedded systems coursework.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-year">2024 — 2025</div>
+        <div class="exp-company">Glucolyzer</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">VP of Development</div>
+        <p>Head of development for an alternative non-invasive blood sugar measurement device. Led hardware and software prototyping for a student-founded medical startup.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-year">2022 — 2024</div>
+        <div class="exp-company">Medical Makers — Stryker Team</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">Project Manager</div>
+        <p>Liaison between Northwestern's medical devices club and Stryker engineers. Organized technical workshops and mentorship sessions bridging student projects and industry practice.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COURSEWORK -->
+<section class="section" id="coursework">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2>Coursework</h2>
+  </div>
+
+  <div class="course-grid">
+
+    <div class="course-group">
+      <div class="course-group-label">Computer Engineering</div>
+      <div class="course-list">
+        <span>Computer Architecture I & II</span>
+        <span>Advanced Digital Design</span>
+        <span>Intro to Computer Engineering</span>
+        <span>Computer Systems Software</span>
+        <span>Feedback Systems</span>
+        <span>Fund. of Solid State Engineering</span>
+      </div>
+    </div>
+
+    <div class="course-group">
+      <div class="course-group-label">Mechanical Engineering</div>
+      <div class="course-list">
+        <span>Robotic Manipulation</span>
+        <span>Machine Elements</span>
+        <span>Machine Dynamics</span>
+        <span>Intro to Dynamic Systems</span>
+        <span>Fluid Mechanics</span>
+        <span>Thermodynamics</span>
+        <span>Mechanics of Materials</span>
+        <span>Comp. Integrated Manufacturing</span>
+        <span>Heat Transfer</span>
+        <span>Engineering Design (Senior Capstone)</span>
+      </div>
+    </div>
+
+    <div class="course-group">
+      <div class="course-group-label">Mechatronics & Embedded</div>
+      <div class="course-list">
+        <span>Advanced Mechatronics</span>
+        <span>Intro to Mechatronics</span>
+        <span>Electronics Design</span>
+        <span>Intro: Electrical Engineering</span>
+        <span>Probabilistic Systems</span>
+      </div>
+    </div>
+
+    <div class="course-group">
+      <div class="course-group-label">CS & AI</div>
+      <div class="course-list">
+        <span>Machine Learning</span>
+        <span>Introduction to AI</span>
+        <span>Data Structures & Algorithms</span>
+        <span>Fundamentals of Computer Prog II</span>
+        <span>Intro to Computer Systems</span>
+        <span>Designing & Constructing Models</span>
+      </div>
+    </div>
+
+    <div class="course-group">
+      <div class="course-group-label">Math & Physics</div>
+      <div class="course-list">
+        <span>Linear Algebra</span>
+        <span>Multivariable Calculus</span>
+        <span>Differential Equations</span>
+        <span>General Physics I–III</span>
+        <span>Engineering Analysis I & II</span>
+      </div>
+    </div>
+
+    <div class="course-group">
+      <div class="course-group-label">Music (Minor)</div>
+      <div class="course-list">
+        <span>Intro to Music Theory</span>
+        <span>Intro to Music Cognition</span>
+        <span>Intro to Music Technology</span>
+        <span>Class Composition</span>
+        <span>Private Voice</span>
+        <span>Guitar</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2>Contact</h2>
+  </div>
+  <div class="contact-inner">
+    <p class="contact-big">Interested in hardware, low-level software, robotics, trading systems, ML hardware, and embedded systems.</p>
+    <a class="contact-email" href="mailto:markchauhan6@gmail.com">markchauhan6@gmail.com ↗</a>
+    <div class="contact-links">
+      <a href="https://github.com/markchauhan" target="_blank">GitHub ↗</a>
+      <a href="https://linkedin.com/in/markchauhan" target="_blank">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>Mark Chauhan · Northwestern University · CE + ME '25</span>
+  <a href="https://github.com/markchauhan/markchauhan.github.io" target="_blank">Source ↗</a>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
