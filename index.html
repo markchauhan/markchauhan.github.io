@@ -1,422 +1,509 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mark Chauhan</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City Robot Oversight — Emergency Geofencing Demo</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F1EFE8;color:#2C2C2A}
+.demo-banner{background:#E6F1FB;border-bottom:1px solid #B5D4F4;padding:8px 20px;font-size:12px;color:#185FA5;text-align:center}
+.wrap{padding:12px}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:white;border:1px solid #D3D1C7;border-radius:12px;margin-bottom:10px}
+.ldot{width:9px;height:9px;border-radius:50%;background:#1D9E75;animation:pu 2s infinite;flex-shrink:0}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.4}}
+.ttl{font-size:14px;font-weight:500;color:#2C2C2A}
+.tsub{font-size:11px;color:#888780;margin-top:1px}
+.pills{display:flex;gap:6px}
+.pill{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:1px solid}
+.pg{background:#E1F5EE;color:#0F6E56;border-color:#5DCAA5}
+.pa{background:#FAEEDA;color:#854F0B;border-color:#EF9F27}
+.pr{background:#FCEBEB;color:#A32D2D;border-color:#E24B4A}
+.city-tabs{display:flex;gap:6px;margin-bottom:10px}
+.ctab{padding:7px 16px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid #D3D1C7;background:white;color:#888780;transition:all .15s}
+.ctab:hover{border-color:#B5D4F4;color:#185FA5}
+.ctab.active{background:#E6F1FB;color:#185FA5;border-color:#B5D4F4}
+.db{display:grid;grid-template-columns:1fr 280px;gap:10px}
+.map{background:white;border:1px solid #D3D1C7;border-radius:12px;overflow:hidden;position:relative}
+.side{display:flex;flex-direction:column;gap:8px}
+.card{background:white;border:1px solid #D3D1C7;border-radius:12px;padding:13px}
+.ct{font-size:10px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.07em;margin-bottom:9px}
+.sr{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.sl{font-size:12px;color:#888780}
+.sv{font-size:12px;font-weight:500;color:#2C2C2A}
+.sv.g{color:#0F6E56}.sv.a{color:#854F0B}.sv.r{color:#A32D2D}
+.hint{font-size:11px;color:#888780;margin-bottom:9px;line-height:1.5}
+.stag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;background:#E6F1FB;color:#185FA5;border:1px solid #B5D4F4;margin:2px}
+.stag .x{cursor:pointer;color:#378ADD;font-size:13px;line-height:1}
+.stag .x:hover{color:#A32D2D}
+.empty{font-size:11px;color:#888780;font-style:italic}
+.gbtn{width:100%;padding:10px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid;display:flex;align-items:center;justify-content:center;gap:7px;transition:all .15s;margin-top:8px}
+.gbtn.armed{background:#FCEBEB;color:#A32D2D;border-color:#E24B4A}
+.gbtn.armed:hover{background:#F7C1C1}
+.gbtn.ok{background:#E1F5EE;color:#0F6E56;border-color:#5DCAA5;cursor:default}
+.gbtn.idle{background:#F5F4F0;color:#888780;border-color:#D3D1C7;cursor:not-allowed}
+.le{font-size:10px;color:#888780;padding:3px 0;border-bottom:1px solid #E8E6E0;display:flex;gap:7px}
+.le:last-child{border-bottom:none}
+.lm{color:#2C2C2A}.lm.r{color:#A32D2D}.lm.g{color:#0F6E56}.lm.a{color:#854F0B}
+.ov{display:none;position:absolute;inset:0;background:rgba(0,0,0,.5);align-items:center;justify-content:center;z-index:10}
+.ov.show{display:flex}
+.ob{background:white;border-radius:12px;border:1px solid #D3D1C7;padding:22px;max-width:300px;width:90%}
+.obt{font-size:15px;font-weight:600;color:#A32D2D;margin-bottom:7px}
+.obd{font-size:12px;color:#888780;line-height:1.6;margin-bottom:15px}
+.oba{display:flex;gap:8px}
+.oba button{flex:1;padding:9px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid}
+.bc{background:#F5F4F0;color:#888780;border-color:#D3D1C7}
+.bc:hover{background:#ECEAE4}
+.bx{background:#FCEBEB;color:#A32D2D;border-color:#E24B4A}
+.bx:hover{background:#F7C1C1}
+.rbtn{width:100%;padding:7px;border-radius:8px;font-size:11px;cursor:pointer;border:1px solid #D3D1C7;background:#F5F4F0;color:#888780;margin-top:6px;transition:all .15s}
+.rbtn:hover{background:white}
+.amb-card{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border-radius:8px;background:#FAEEDA;border:1px solid #EF9F27}
+.amb-dot{width:10px;height:10px;border-radius:2px;background:#EF9F27;flex-shrink:0;margin-top:1px}
+.street{cursor:pointer;stroke-linecap:round}
+.street:hover{opacity:.7}
+@media(max-width:700px){.db{grid-template-columns:1fr}.side{display:none}}
+</style>
 </head>
 <body>
 
-<div class="grain"></div>
+<div class="demo-banner">
+  Demo — City Robot Oversight Platform &nbsp;·&nbsp; Select streets on the map to build a geofence &nbsp;·&nbsp; Click "Halt robots" to deploy the kill switch
+</div>
 
-<nav class="nav">
-  <span class="nav-name">MC</span>
-  <div class="nav-links">
-    <a href="#about">about</a>
-    <a href="#experience">experience</a>
-    <a href="#projects">projects</a>
-    <a href="#coursework">coursework</a>
-    <a href="#contact">contact</a>
-    <a href="https://github.com/markchauhan" target="_blank" class="nav-gh">github ↗</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="about">
-  <div class="hero-eyebrow">
-    <span class="dot"></span><span>Multidisciplinary Engineer</span>
-    <span class="dot"></span><span>Northwestern University '25</span>
-    <span class="dot"></span><span>Boston, MA</span>
-  </div>
-  <div class="hero-content">
-    <h1 class="hero-heading">Mark<br><em>Chauhan</em></h1>
-    <div class="hero-right">
-      <p class="hero-desc">B.S. Computer Engineering + B.S. Mechanical Engineering, Minor in AI & Music. I work across the full hardware–software stack — embedded firmware, low-latency systems, FPGA design, robotics, and ML. Currently at Hyannis Port Research building trading infrastructure in C. Interested in roles at the intersection of <strong>hardware and low-level software</strong>: robotics, trading systems, ML hardware, and embedded systems.</p>
-      <div class="stack-row">
-        <span>C</span><span>C++</span><span>Python</span><span>Verilog</span><span>ARM Assembly</span><span>FPGA</span><span>PIC32</span><span>Linux</span><span>MATLAB</span><span>SQL</span>
+<div class="wrap">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:9px">
+      <div class="ldot"></div>
+      <div>
+        <div class="ttl" id="city-title">Ann Arbor, MI — robot oversight</div>
+        <div class="tsub" id="city-sub">Live telemetry · May Mobility AVs · Click streets to geofence</div>
       </div>
-      <div class="stack-row" style="margin-top:8px">
-        <span>SolidWorks</span><span>Siemens NX</span><span>Eagle PCB</span><span>Cadence</span><span>FEA</span><span>Wireshark</span>
-      </div>
+    </div>
+    <div class="pills">
+      <span class="pill pg" id="p-nom">8 nominal</span>
+      <span class="pill pa" id="p-warn">2 warning</span>
+      <span class="pill pr" id="p-inc">1 incident</span>
     </div>
   </div>
-</section>
 
-<div class="divider"></div>
-
-<!-- EXPERIENCE -->
-<section class="section" id="experience">
-  <div class="section-header"><span class="section-num">01</span><h2>Experience</h2></div>
-  <div class="exp-list">
-
-    <div class="exp-item">
-      <div class="exp-left">
-        <div class="exp-year">2025 — now</div>
-        <div class="exp-company">Hyannis Port Research</div>
-        <div class="exp-location">Needham, MA</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-title">Software Engineer I</div>
-        <p>Building production low-latency trading infrastructure in C. Implemented FIX and INET protocol handlers, designed multi-threaded memory-managed pipelines processing high message volumes across multiple clients and exchanges. Built a simulation and testing framework for trading middleware.</p>
-        <div class="chips"><span>C</span><span>FIX/INET</span><span>Multithreading</span><span>Memory Management</span><span>Low-latency</span></div>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-left">
-        <div class="exp-year">2024</div>
-        <div class="exp-company">Honeywell</div>
-        <div class="exp-location">Acton, MA</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-title">Embedded Software Engineering Intern</div>
-        <p>Designed and integrated an upgraded feedback control system for HVAC valve control in critical spaces. Developed firmware in C++ and Python, debugged BACnet protocol with Wireshark, delivered a cost-effective sensor redesign. Presented to five global engineering teams.</p>
-        <div class="chips"><span>C++</span><span>Python</span><span>BACnet</span><span>PID Control</span><span>Wireshark</span><span>Firmware</span></div>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-left">
-        <div class="exp-year">2023 — 2024</div>
-        <div class="exp-company">Northwestern Haptics Lab &<br>Querrey Simpson Bioelectronics</div>
-        <div class="exp-location">Evanston, IL</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-title">Undergraduate Researcher</div>
-        <p>Engineered a haptic interface simulating textures using a multi-actuator pin array — PCB layout in Eagle, embedded firmware on a PIC32. Fabricated flexible bioelectronic sensors for body-movement tracking.</p>
-        <div class="chips"><span>PIC32</span><span>Eagle PCB</span><span>Embedded C</span><span>Haptics</span><span>Bioelectronics</span></div>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-left">
-        <div class="exp-year">2023</div>
-        <div class="exp-company">ORCO Robotics</div>
-        <div class="exp-location">Evanston, IL</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-title">Embedded Systems Developer</div>
-        <p>Directed embedded systems for a robotic prosthetic arm, engineering user-input control systems and integrating software with hardware actuators.</p>
-        <div class="chips"><span>Arduino</span><span>Embedded C</span><span>Robotics</span></div>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-left">
-        <div class="exp-year">2022 — 2024</div>
-        <div class="exp-company">The Garage @ Northwestern</div>
-        <div class="exp-location">Evanston, IL</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-title">Engineer — Robotics & Medical Devices</div>
-        <p>Prototyped hardware for student-led startups: robotic arms, smart glucometers, child-safety outlet protectors. Designed mechanical and electronic components in SolidWorks.</p>
-        <div class="chips"><span>SolidWorks</span><span>Prototyping</span><span>Robotics</span><span>Medical Devices</span></div>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-left">
-        <div class="exp-year">2021 — 2022</div>
-        <div class="exp-company">Advanced Quantum Materials Lab</div>
-        <div class="exp-location">Hoboken, NJ</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-title">Student Researcher</div>
-        <p>Analyzed carbon-nanotube flexible sensors for leg-movement characterization. Presented research on 3D-printed circuit boards using graphene and CNT growth.</p>
-        <div class="chips"><span>Carbon Nanotubes</span><span>Flexible Electronics</span><span>Sensors</span></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PROJECTS with filter -->
-<section class="section" id="projects">
-  <div class="section-header"><span class="section-num">02</span><h2>Projects</h2></div>
-
-  <!-- FILTER BAR -->
-  <div class="filter-bar">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="c">C</button>
-    <button class="filter-btn" data-filter="c++">C++</button>
-    <button class="filter-btn" data-filter="fpga">FPGA</button>
-    <button class="filter-btn" data-filter="verilog">Verilog</button>
-    <button class="filter-btn" data-filter="embedded">Embedded</button>
-    <button class="filter-btn" data-filter="robotics">Robotics</button>
-    <button class="filter-btn" data-filter="ml">ML / AI</button>
-    <button class="filter-btn" data-filter="python">Python</button>
-    <button class="filter-btn" data-filter="mechanical">Mechanical</button>
+  <div class="city-tabs">
+    <button class="ctab active" onclick="switchCity('annarbor',this)">Ann Arbor, MI</button>
+    <button class="ctab" onclick="switchCity('knoxville',this)">Knoxville, TN</button>
+    <button class="ctab" onclick="switchCity('chandler',this)">Chandler, AZ</button>
   </div>
 
-  <div class="projects-grid" id="projects-grid">
-
-    <!-- RISC-V SIMD — featured, dual links -->
-    <div class="proj-card featured" data-tags="fpga verilog c python">
-      <div class="proj-header">
-        <span class="proj-cat">Computer Architecture · Verilog · FPGA</span>
-        <div class="proj-btns">
-          <a href="https://github.com/markchauhan/cpe361" target="_blank" class="proj-link-btn">GitHub ↗</a>
-          <a href="Final_Project_Report.pdf" target="_blank" class="proj-link-btn paper-btn">Paper ↗</a>
+  <div class="db">
+    <div class="map">
+      <svg id="mapsvg" viewBox="0 0 500 460" style="width:100%;height:100%;min-height:460px;display:block"></svg>
+      <div class="ov" id="ov">
+        <div class="ob">
+          <div class="obt">Deploy emergency geofence?</div>
+          <div class="obd" id="ov-body">Halt command broadcasts to all robots on selected streets immediately.</div>
+          <div class="oba">
+            <button class="bc" onclick="document.getElementById('ov').classList.remove('show')">Cancel</button>
+            <button class="bx" onclick="deploy()">Confirm halt</button>
+          </div>
         </div>
       </div>
-      <h3>RISC-V Processor with Custom SIMD Instructions</h3>
-      <p>Pipelined RISC-V processor in Verilog extended with custom SIMD vector instructions (vdot, vadd, vmul, vsub, vdiv) targeting matrix multiplication. Features 128-bit vector registers, dual ALU architecture (scalar + vector), five-stage pipeline. Verified on Terasic DE2-115 FPGA at 50MHz with automated Python testing against numpy. Achieved up to <strong>5× speedup</strong> over scalar execution.</p>
-      <div class="chips"><span>Verilog</span><span>RISC-V</span><span>SIMD</span><span>FPGA</span><span>Pipeline</span><span>Icarus Verilog</span><span>GTKWave</span><span>Python</span></div>
     </div>
 
-    <!-- Intelligent Motor Driver -->
-    <a class="proj-card" href="https://github.com/markchauhan/me333" target="_blank" data-tags="c embedded">
-      <div class="proj-header"><span class="proj-cat">Control Systems · C</span><span class="proj-arrow">↗</span></div>
-      <h3>Intelligent Motor Driver</h3>
-      <p>Closed-loop motor control via PC UI over USB. PI position and current controllers, quadrature encoder feedback, real-time interactive tuning. MATLAB validated step response.</p>
-      <div class="chips"><span>C</span><span>PI Controller</span><span>Encoders</span><span>Current Sensing</span><span>MATLAB</span></div>
-    </a>
-
-    <!-- Advanced Mechatronics -->
-    <a class="proj-card" href="https://github.com/markchauhan/me433" target="_blank" data-tags="c embedded python">
-      <div class="proj-header"><span class="proj-cat">Embedded Firmware · C</span><span class="proj-arrow">↗</span></div>
-      <h3>Advanced Mechatronics System</h3>
-      <p>Bare-metal PIC32: SPI DAC, I²C OLED, IMU, UART, PWM motor control, and DSP signal processing. Python CV pipeline for camera-based navigation.</p>
-      <div class="chips"><span>PIC32</span><span>C</span><span>SPI</span><span>I²C</span><span>UART</span><span>PWM</span><span>DSP</span></div>
-    </a>
-
-    <!-- SQL Compiler -->
-    <a class="proj-card" href="https://github.com/markchauhan/cs211" target="_blank" data-tags="c c++">
-      <div class="proj-header"><span class="proj-cat">Systems Software · C / C++</span><span class="proj-arrow">↗</span></div>
-      <h3>SQL Compiler (SimpleSQL)</h3>
-      <p>From-scratch SQL engine in C/C++. Lexer → AST parser → executor against linked-list-of-arrays store. Unit tested with Google Test.</p>
-      <div class="chips"><span>C</span><span>C++</span><span>Lexing</span><span>Parsing</span><span>AST</span><span>Google Test</span></div>
-    </a>
-
-    <!-- OSM Navigator -->
-    <a class="proj-card" href="https://github.com/markchauhan/cs211" target="_blank" data-tags="c++">
-      <div class="proj-header"><span class="proj-cat">Algorithms · C++</span><span class="proj-arrow">↗</span></div>
-      <h3>Open Street Map Navigator</h3>
-      <p>Shortest-path navigation across Northwestern's campus. Weighted graph from OSM footway data, Dijkstra, refactored for runtime efficiency.</p>
-      <div class="chips"><span>C++</span><span>Graph Theory</span><span>Dijkstra</span><span>OSM</span></div>
-    </a>
-
-    <!-- youBot -->
-    <a class="proj-card" href="https://github.com/markchauhan/me449" target="_blank" data-tags="robotics python">
-      <div class="proj-header"><span class="proj-cat">Robotics · Python</span><span class="proj-arrow">↗</span></div>
-      <h3>youBot Mobile Manipulation</h3>
-      <p>Autonomous pick-and-place with a KUKA youBot. Trajectory generation, FK/IK, odometry, and PI feedback control in CoppeliaSim.</p>
-      <div class="chips"><span>Python</span><span>Robotics</span><span>IK/FK</span><span>Feedback Control</span><span>CoppeliaSim</span></div>
-    </a>
-
-    <!-- CCHS -->
-    <a class="proj-card" href="https://github.com/markchauhan/cs349" target="_blank" data-tags="ml python">
-      <div class="proj-header"><span class="proj-cat">Machine Learning · Python</span><span class="proj-arrow">↗</span></div>
-      <h3>CCHS Genetic Disease Classifier</h3>
-      <p>ML diagnostic tool for CCHS using 67-point facial landmark vectors. SVM + 3-layer neural network: >85% accuracy, >95% precision — cost-effective alternative to PHOX2B genetic testing.</p>
-      <div class="chips"><span>Python</span><span>PyTorch</span><span>SVM</span><span>scikit-learn</span><span>Neural Networks</span></div>
-    </a>
-
-    <!-- P&G — no link -->
-    <div class="proj-card no-link" data-tags="c embedded">
-      <div class="proj-header"><span class="proj-cat">IoT · Embedded · Capstone</span></div>
-      <h3>P&G IoT Consumer Product</h3>
-      <p>Senior capstone with Procter & Gamble. Led embedded systems integration and data tracking for an IoT-enabled consumer electronics product.</p>
-      <div class="chips"><span>IoT</span><span>Embedded Systems</span><span>C</span><span>Sensors</span></div>
-    </div>
-
-    <!-- Matrix Mult — no link -->
-    <div class="proj-card no-link" data-tags="fpga verilog">
-      <div class="proj-header"><span class="proj-cat">Hardware Accelerator · Verilog</span></div>
-      <h3>Matrix Multiplication on FPGA</h3>
-      <p>Accelerated matrix multiplication on RISC-V using custom vector instructions in Verilog. Synthesized with Xcelium and Genus for timing/area reports.</p>
-      <div class="chips"><span>Verilog</span><span>FPGA</span><span>RISC-V</span><span>Xcelium</span><span>Genus</span></div>
-    </div>
-
-    <!-- Audio Compression -->
-    <a class="proj-card" href="https://github.com/markchauhan/ee202" target="_blank" data-tags="python ml">
-      <div class="proj-header"><span class="proj-cat">Signal Processing · MATLAB</span><span class="proj-arrow">↗</span></div>
-      <h3>Audio Compression Algorithm</h3>
-      <p>Frequency-domain audio compression in MATLAB. Swept cutoff frequency to find optimal confidence threshold (~0.93 at 3kHz). Validated against reference signals.</p>
-      <div class="chips"><span>MATLAB</span><span>DSP</span><span>FFT</span><span>Signal Processing</span></div>
-    </a>
-
-    <!-- Machine Dynamics -->
-    <a class="proj-card" href="https://github.com/markchauhan/me314" target="_blank" data-tags="python mechanical">
-      <div class="proj-header"><span class="proj-cat">Simulation · Python</span><span class="proj-arrow">↗</span></div>
-      <h3>Machine Dynamics Simulations</h3>
-      <p>Double pendulum and biomechanical split simulations via Lagrangian mechanics. Animated in Python/Colab with real-time multi-body dynamics rendering.</p>
-      <div class="chips"><span>Python</span><span>Lagrangian Mechanics</span><span>Simulation</span></div>
-    </a>
-
-    <!-- Gear Transmission -->
-    <a class="proj-card" href="https://github.com/markchauhan/me315" target="_blank" data-tags="mechanical">
-      <div class="proj-header"><span class="proj-cat">Mechanical Design · CAD / FEA</span><span class="proj-arrow">↗</span></div>
-      <h3>Three-Shaft Gear Transmission</h3>
-      <p>Gear transmission reducing 2700→400 rpm at 60kW. Full force analysis, stress calculations, bearing selection for 99% reliability over a 5-year lifespan.</p>
-      <div class="chips"><span>SolidWorks</span><span>FEA</span><span>Gear Design</span><span>Stress Analysis</span></div>
-    </a>
-
-    <!-- CNC — no link -->
-    <div class="proj-card no-link" data-tags="mechanical">
-      <div class="proj-header"><span class="proj-cat">Manufacturing · Siemens NX / CAD</span></div>
-      <h3>CNC Sensor Bracket + Fabrication</h3>
-      <p>Sensor bracket in Siemens NX, validated with FEA and physical testing. Fabrication: sand-cast anvil, milled ink-jet mold, reverse-engineered collet via metrology.</p>
-      <div class="chips"><span>Siemens NX</span><span>FEA</span><span>SolidWorks</span><span>Sand Casting</span><span>Milling</span></div>
-    </div>
-
-  </div>
-
-  <div class="filter-empty" id="filter-empty">No projects match that filter.</div>
-</section>
-
-<div class="divider"></div>
-
-<!-- LEADERSHIP -->
-<section class="section" id="leadership">
-  <div class="section-header"><span class="section-num">03</span><h2>Leadership</h2></div>
-  <div class="exp-list">
-
-    <div class="exp-item">
-      <div class="exp-left">
-        <div class="exp-year">2024 — 2025</div>
-        <div class="exp-company">Northwestern University</div>
+    <div class="side">
+      <div class="card">
+        <div class="ct">Fleet summary</div>
+        <div class="sr"><span class="sl">Active robots</span><span class="sv" id="s-total">11</span></div>
+        <div class="sr"><span class="sl">Nominal</span><span class="sv g" id="s-nom">8</span></div>
+        <div class="sr"><span class="sl">Warning</span><span class="sv a" id="s-warn">2</span></div>
+        <div class="sr" style="margin-bottom:0"><span class="sl">Incident</span><span class="sv r" id="s-inc">1</span></div>
       </div>
-      <div class="exp-right">
-        <div class="exp-title">Teaching Assistant — Mechatronics & Biomedical Circuits</div>
-        <p>Supported instruction of ME 333 (Mechatronics) and BME 308 (Biomedical Circuits). Held office hours, graded labs, mentored students through embedded systems coursework.</p>
+
+      <div class="card">
+        <div class="ct">Ambulance alert</div>
+        <div class="amb-card">
+          <div class="amb-dot"></div>
+          <div>
+            <div style="font-size:11px;font-weight:500;color:#854F0B" id="amb-street">On Huron St near Division</div>
+            <div style="font-size:10px;color:#854F0B;margin-top:2px" id="amb-robots">3 AVs in 2-block radius — warned</div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="exp-item">
-      <div class="exp-left">
-        <div class="exp-year">2024 — 2025</div>
-        <div class="exp-company">Glucolyzer</div>
+      <div class="card">
+        <div class="ct">Selected streets</div>
+        <div class="hint">Click any street on the map to add it to the geofence zone.</div>
+        <div id="street-tags"><span class="empty">No streets selected</span></div>
+        <div id="robot-count" style="font-size:11px;color:#888780;margin-top:8px"></div>
       </div>
-      <div class="exp-right">
-        <div class="exp-title">VP of Development</div>
-        <p>Head of development for an alternative non-invasive blood sugar measurement device. Led hardware and software prototyping for a student-founded medical startup.</p>
+
+      <div class="card">
+        <div class="ct">Emergency geofence</div>
+        <button class="gbtn idle" id="gbtn">
+          <span id="bico">&#9632;</span>
+          <span id="btxt">Select streets first</span>
+        </button>
+        <button class="rbtn" id="resetbtn" style="display:none" onclick="resetDemo()">↺ Reset demo</button>
       </div>
-    </div>
 
-    <div class="exp-item">
-      <div class="exp-left">
-        <div class="exp-year">2022 — 2024</div>
-        <div class="exp-company">Medical Makers — Stryker Team</div>
+      <div class="card" style="flex:1">
+        <div class="ct">Command log</div>
+        <div id="log"></div>
       </div>
-      <div class="exp-right">
-        <div class="exp-title">Project Manager</div>
-        <p>Liaison between Northwestern's medical devices club and Stryker engineers. Organized technical workshops bridging student projects and industry practice.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- COURSEWORK -->
-<section class="section" id="coursework">
-  <div class="section-header"><span class="section-num">04</span><h2>Coursework</h2></div>
-  <div class="course-grid">
-
-    <div class="course-group">
-      <div class="course-group-label">Computer Engineering</div>
-      <div class="course-list">
-        <span>Computer Architecture I & II</span>
-        <span>Advanced Digital Design</span>
-        <span>Intro to Computer Engineering</span>
-        <span>Computer Systems Software</span>
-        <span>Feedback Systems</span>
-        <span>Fund. of Solid State Engineering</span>
-      </div>
-    </div>
-
-    <div class="course-group">
-      <div class="course-group-label">Mechanical Engineering</div>
-      <div class="course-list">
-        <span>Robotic Manipulation</span>
-        <span>Machine Elements</span>
-        <span>Machine Dynamics</span>
-        <span>Intro to Dynamic Systems</span>
-        <span>Fluid Mechanics</span>
-        <span>Thermodynamics</span>
-        <span>Mechanics of Materials</span>
-        <span>Comp. Integrated Manufacturing</span>
-        <span>Heat Transfer</span>
-        <span>Engineering Design (Senior Capstone)</span>
-      </div>
-    </div>
-
-    <div class="course-group">
-      <div class="course-group-label">Mechatronics & Embedded</div>
-      <div class="course-list">
-        <span>Advanced Mechatronics</span>
-        <span>Intro to Mechatronics</span>
-        <span>Electronics Design</span>
-        <span>Intro: Electrical Engineering</span>
-        <span>Probabilistic Systems</span>
-      </div>
-    </div>
-
-    <div class="course-group">
-      <div class="course-group-label">CS & AI</div>
-      <div class="course-list">
-        <span>Machine Learning</span>
-        <span>Introduction to AI</span>
-        <span>Data Structures & Algorithms</span>
-        <span>Fundamentals of Computer Prog II</span>
-        <span>Intro to Computer Systems</span>
-        <span>Designing & Constructing Models</span>
-      </div>
-    </div>
-
-    <div class="course-group">
-      <div class="course-group-label">Math & Physics</div>
-      <div class="course-list">
-        <span>Linear Algebra</span>
-        <span>Multivariable Calculus</span>
-        <span>Differential Equations</span>
-        <span>General Physics I–III</span>
-        <span>Engineering Analysis I & II</span>
-      </div>
-    </div>
-
-    <div class="course-group">
-      <div class="course-group-label">Music (Minor)</div>
-      <div class="course-list">
-        <span>Intro to Music Theory</span>
-        <span>Intro to Music Cognition</span>
-        <span>Intro to Music Technology</span>
-        <span>Class Composition</span>
-        <span>Private Voice</span>
-        <span>Guitar</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CONTACT -->
-<section class="section contact-section" id="contact">
-  <div class="section-header"><span class="section-num">05</span><h2>Contact</h2></div>
-  <div class="contact-inner">
-    <p class="contact-big">Interested in hardware, low-level software, robotics, trading systems, ML hardware, and embedded systems.</p>
-    <a class="contact-email" href="mailto:markchauhan6@gmail.com">markchauhan6@gmail.com ↗</a>
-    <div class="contact-links">
-      <a href="https://github.com/markchauhan" target="_blank">GitHub ↗</a>
-      <a href="https://www.linkedin.com/in/mark-chauhan/" target="_blank">LinkedIn ↗</a>
     </div>
   </div>
-</section>
+</div>
 
-<footer class="footer">
-  <span>Mark Chauhan · Northwestern University · CE + ME '25</span>
-  <a href="https://github.com/markchauhan/markchauhan.github.io" target="_blank">Source ↗</a>
-</footer>
+<script>
+var cities={
+  annarbor:{
+    title:'Ann Arbor, MI — robot oversight',
+    sub:'Live telemetry · May Mobility AVs · Click streets to geofence',
+    nom:8,warn:2,inc:1,total:11,
+    ambStreet:'On Huron St near Division',
+    ambRobots:'3 May Mobility AVs in 2-block radius — warned',
+    ambX:230,ambY:120,
+    bg:'#EEF2E8',
+    buildings:[
+      {x:110,y:30,w:95,h:80,label:'U of M campus'},{x:230,y:30,w:120,h:80,label:'Central campus'},
+      {x:110,y:160,w:95,h:90,label:'Kerrytown'},{x:230,y:160,w:120,h:90,label:'Downtown core'},
+      {x:370,y:160,w:80,h:90,label:'State St'},{x:30,y:160,w:65,h:90,label:'W side'},
+      {x:110,y:300,w:240,h:70,label:'South U district'},{x:370,y:300,w:80,h:70,label:''}
+    ],
+    streets:[
+      {id:'huron',name:'Huron St',x1:10,y1:120,x2:470,y2:120,w:14,color:'#C8C4B4'},
+      {id:'wash',name:'Washington St',x1:10,y1:255,x2:470,y2:255,w:10,color:'#C8C4B4'},
+      {id:'mich',name:'Michigan Ave',x1:10,y1:380,x2:470,y2:380,w:8,color:'#C8C4B4'},
+      {id:'main',name:'Main St',x1:110,y1:10,x2:110,y2:450,w:8,color:'#C8C4B4'},
+      {id:'div',name:'Division St',x1:230,y1:10,x2:230,y2:450,w:10,color:'#C8C4B4'},
+      {id:'state',name:'State St',x1:370,y1:10,x2:370,y2:450,w:10,color:'#C8C4B4'},
+      {id:'fourth',name:'4th Ave',x1:10,y1:10,x2:95,y2:450,w:6,color:'#C8C4B4'},
+      {id:'pack',name:'Packard St',x1:10,y1:300,x2:370,y2:380,w:7,color:'#C8C4B4'},
+    ],
+    robots:[
+      {id:'MM-01',x:170,y:120,s:'incident',streets:['huron']},
+      {id:'MM-02',x:300,y:120,s:'warning',streets:['huron','div']},
+      {id:'MM-03',x:140,y:255,s:'warning',streets:['wash']},
+      {id:'MM-04',x:280,y:255,s:'nominal',streets:['wash','div']},
+      {id:'MM-05',x:390,y:255,s:'nominal',streets:['wash','state']},
+      {id:'MM-06',x:60,y:200,s:'nominal',streets:['main']},
+      {id:'MM-07',x:230,y:340,s:'nominal',streets:['mich','div']},
+      {id:'MM-08',x:370,y:340,s:'nominal',streets:['mich','state']},
+      {id:'MM-09',x:110,y:380,s:'nominal',streets:['mich','main']},
+      {id:'MM-10',x:440,y:180,s:'nominal',streets:['state']},
+      {id:'MM-11',x:60,y:310,s:'nominal',streets:['pack']},
+    ],
+    logEntries:[
+      {t:'10:42',m:'Incident: MM-01 blocking Huron St intersection',c:'r'},
+      {t:'10:39',m:'Ambulance on Huron — 3 AVs warned',c:'a'},
+      {t:'10:30',m:'MM-03 low battery — rerouting',c:'a'},
+      {t:'10:15',m:'11 May Mobility AVs checked in',c:''},
+    ]
+  },
+  knoxville:{
+    title:'Knoxville, TN — robot oversight',
+    sub:'Live telemetry · Delivery robots active · Click streets to geofence',
+    nom:10,warn:1,inc:1,total:12,
+    ambStreet:'On Market St near Gay St',
+    ambRobots:'2 delivery robots in 2-block radius — warned',
+    ambX:165,ambY:75,
+    bg:'#F1EFE8',
+    buildings:[
+      {x:107,y:87,w:91,h:91,label:'Market Square'},{x:222,y:87,w:111,h:91,label:'City Hall'},
+      {x:357,y:87,w:76,h:91,label:'Library'},{x:107,y:202,w:91,h:91,label:'Old City'},
+      {x:222,y:202,w:111,h:91,label:'Downtown'},{x:357,y:202,w:76,h:91,label:'Civic'},
+      {x:18,y:87,w:65,h:91,label:''},{x:18,y:202,w:65,h:91,label:''},
+      {x:107,y:317,w:228,h:58,label:'Convention center'},{x:357,y:317,w:76,h:58,label:''}
+    ],
+    streets:[
+      {id:'market',name:'Market St',x1:10,y1:75,x2:460,y2:75,w:14,color:'#D3D1C7'},
+      {id:'fifth',name:'5th Ave',x1:10,y1:190,x2:460,y2:190,w:10,color:'#D3D1C7'},
+      {id:'mainave',name:'Main Ave',x1:10,y1:305,x2:460,y2:305,w:10,color:'#D3D1C7'},
+      {id:'union',name:'Union Ave',x1:10,y1:385,x2:460,y2:385,w:7,color:'#D3D1C7'},
+      {id:'gay',name:'Gay St',x1:107,y1:10,x2:107,y2:420,w:7,color:'#D3D1C7'},
+      {id:'walnut',name:'Walnut St',x1:222,y1:10,x2:222,y2:420,w:10,color:'#D3D1C7'},
+      {id:'cumb',name:'Cumberland Ave',x1:357,y1:10,x2:357,y2:420,w:10,color:'#D3D1C7'},
+      {id:'broadway',name:'Broadway',x1:10,y1:10,x2:107,y2:420,w:6,color:'#D3D1C7'},
+    ],
+    robots:[
+      {id:'R-003',x:165,y:75,s:'incident',streets:['market']},
+      {id:'R-001',x:140,y:130,s:'nominal',streets:['gay']},
+      {id:'R-002',x:290,y:75,s:'warning',streets:['market','walnut']},
+      {id:'R-004',x:280,y:190,s:'nominal',streets:['fifth']},
+      {id:'R-005',x:107,y:248,s:'nominal',streets:['gay']},
+      {id:'R-006',x:252,y:260,s:'nominal',streets:['walnut']},
+      {id:'R-007',x:357,y:232,s:'nominal',streets:['cumb']},
+      {id:'R-008',x:390,y:120,s:'nominal',streets:['cumb']},
+      {id:'R-009',x:52,y:125,s:'nominal',streets:['broadway']},
+      {id:'R-010',x:168,y:340,s:'nominal',streets:['mainave']},
+      {id:'R-011',x:288,y:340,s:'nominal',streets:['mainave']},
+      {id:'R-012',x:420,y:305,s:'nominal',streets:['cumb','mainave']},
+    ],
+    logEntries:[
+      {t:'11:42',m:'Incident: R-003 blocking Market St at Gay',c:'r'},
+      {t:'11:39',m:'Ambulance on Market — 2 robots warned',c:'a'},
+      {t:'11:30',m:'R-001 battery low — returning to base',c:'a'},
+      {t:'11:15',m:'12 delivery robots checked in',c:''},
+    ]
+  },
+  chandler:{
+    title:'Chandler, AZ — robot oversight',
+    sub:'Live telemetry · Waymo AVs active · Click streets to geofence',
+    nom:9,warn:2,inc:1,total:12,
+    ambStreet:'On Chandler Blvd near Arizona Ave',
+    ambRobots:'4 Waymo AVs in 2-block radius — warned',
+    ambX:175,ambY:80,
+    bg:'#F5F0E8',
+    buildings:[
+      {x:110,y:90,w:100,h:90,label:'Chandler Fashion'},{x:240,y:90,w:110,h:90,label:'Intel campus'},
+      {x:370,y:90,w:80,h:90,label:'Waymo hub'},{x:110,y:210,w:100,h:85,label:'City Hall'},
+      {x:240,y:210,w:110,h:85,label:'Downtown'},{x:370,y:210,w:80,h:85,label:'Civic'},
+      {x:25,y:90,w:65,h:85,label:''},{x:25,y:210,w:65,h:85,label:''},
+      {x:110,y:320,w:340,h:65,label:'AV testing corridor'},{x:25,y:320,w:65,h:65,label:''}
+    ],
+    streets:[
+      {id:'cblvd',name:'Chandler Blvd',x1:10,y1:80,x2:470,y2:80,w:16,color:'#D8D0C0'},
+      {id:'ray',name:'Ray Rd',x1:10,y1:200,x2:470,y2:200,w:12,color:'#D8D0C0'},
+      {id:'pecos',name:'Pecos Rd',x1:10,y1:315,x2:470,y2:315,w:12,color:'#D8D0C0'},
+      {id:'ocotillo',name:'Ocotillo Rd',x1:10,y1:395,x2:470,y2:395,w:8,color:'#D8D0C0'},
+      {id:'arizona',name:'Arizona Ave',x1:110,y1:10,x2:110,y2:450,w:8,color:'#D8D0C0'},
+      {id:'alma',name:'Alma School Rd',x1:240,y1:10,x2:240,y2:450,w:12,color:'#D8D0C0'},
+      {id:'dobson',name:'Dobson Rd',x1:370,y1:10,x2:370,y2:450,w:12,color:'#D8D0C0'},
+      {id:'price',name:'Price Rd',x1:460,y1:10,x2:460,y2:450,w:7,color:'#D8D0C0'},
+    ],
+    robots:[
+      {id:'W-01',x:175,y:80,s:'incident',streets:['cblvd']},
+      {id:'W-02',x:305,y:80,s:'warning',streets:['cblvd','alma']},
+      {id:'W-03',x:110,y:145,s:'warning',streets:['arizona']},
+      {id:'W-04',x:240,y:155,s:'nominal',streets:['alma']},
+      {id:'W-05',x:370,y:145,s:'nominal',streets:['dobson']},
+      {id:'W-06',x:55,y:200,s:'nominal',streets:['ray']},
+      {id:'W-07',x:175,y:255,s:'nominal',streets:['arizona','ray']},
+      {id:'W-08',x:305,y:255,s:'nominal',streets:['alma','ray']},
+      {id:'W-09',x:420,y:200,s:'nominal',streets:['dobson','ray']},
+      {id:'W-10',x:175,y:355,s:'nominal',streets:['pecos']},
+      {id:'W-11',x:305,y:355,s:'nominal',streets:['alma','pecos']},
+      {id:'W-12',x:420,y:315,s:'nominal',streets:['dobson']},
+    ],
+    logEntries:[
+      {t:'14:22',m:'Incident: W-01 blocking Chandler Blvd',c:'r'},
+      {t:'14:19',m:'Ambulance on Chandler Blvd — 4 Waymos warned',c:'a'},
+      {t:'14:10',m:'W-03 route deviation detected',c:'a'},
+      {t:'13:55',m:'12 Waymo AVs checked in for afternoon shift',c:''},
+    ]
+  }
+};
 
-<script src="js/main.js"></script>
+var currentCity='annarbor';
+var selected=new Set();
+var deployed=false;
+
+function switchCity(c,btn){
+  if(deployed)return;
+  currentCity=c;
+  selected.clear();
+  document.querySelectorAll('.ctab').forEach(function(t){t.classList.remove('active')});
+  btn.classList.add('active');
+  renderCity();
+  updatePanel();
+}
+
+function renderCity(){
+  var c=cities[currentCity];
+  document.getElementById('city-title').textContent=c.title;
+  document.getElementById('city-sub').textContent=c.sub;
+  document.getElementById('p-nom').textContent=c.nom+' nominal';
+  document.getElementById('p-warn').textContent=c.warn+' warning';
+  document.getElementById('p-inc').textContent=c.inc+' incident';
+  document.getElementById('s-total').textContent=c.total;
+  document.getElementById('s-nom').textContent=c.nom;
+  document.getElementById('s-warn').textContent=c.warn;
+  document.getElementById('s-inc').textContent=c.inc;
+  document.getElementById('amb-street').textContent=c.ambStreet;
+  document.getElementById('amb-robots').textContent=c.ambRobots;
+
+  var log=document.getElementById('log');
+  log.innerHTML='';
+  c.logEntries.forEach(function(e){
+    var d=document.createElement('div');d.className='le';
+    d.innerHTML='<span style="flex-shrink:0;color:#888780">'+e.t+'</span><span class="lm '+e.c+'">'+e.m+'</span>';
+    log.appendChild(d);
+  });
+
+  var svg=document.getElementById('mapsvg');
+  while(svg.firstChild)svg.removeChild(svg.firstChild);
+
+  function el(tag,attrs){
+    var e=document.createElementNS('http://www.w3.org/2000/svg',tag);
+    for(var k in attrs)e.setAttribute(k,attrs[k]);
+    return e;
+  }
+  function anim(attrs){
+    var a=document.createElementNS('http://www.w3.org/2000/svg','animate');
+    for(var k in attrs)a.setAttribute(k,attrs[k]);
+    return a;
+  }
+  function txt(x,y,content,size,fill,anchor,rot){
+    var t=el('text',{x:x,y:y,'font-size':size||9,'fill':fill||'#5F5E5A','text-anchor':anchor||'middle','font-family':'sans-serif'});
+    if(rot)t.setAttribute('transform','rotate('+rot+','+x+','+y+')');
+    t.textContent=content;t.style.pointerEvents='none';
+    return t;
+  }
+
+  svg.appendChild(el('rect',{width:500,height:460,fill:c.bg}));
+
+  c.buildings.forEach(function(b){
+    svg.appendChild(el('rect',{x:b.x,y:b.y,width:b.w,height:b.h,rx:3,fill:'#B4B2A9',opacity:.42}));
+    if(b.label)svg.appendChild(txt(b.x+b.w/2,b.y+b.h/2+3,b.label,8,'#5F5E5A'));
+  });
+
+  var wz=el('circle',{cx:c.ambX,cy:c.ambY,r:55,fill:'#EF9F27','fill-opacity':.1,stroke:'#EF9F27','stroke-width':1,'stroke-dasharray':'4,3'});
+  svg.appendChild(wz);
+  for(var ri=0;ri<3;ri++){
+    var ring=el('circle',{cx:c.ambX,cy:c.ambY,r:20,fill:'none',stroke:'#EF9F27','stroke-width':2});
+    ring.appendChild(anim({attributeName:'r',values:'20;65',dur:'2s',begin:(ri*0.65)+'s',repeatCount:'indefinite'}));
+    ring.appendChild(anim({attributeName:'opacity',values:'.7;0',dur:'2s',begin:(ri*0.65)+'s',repeatCount:'indefinite'}));
+    svg.appendChild(ring);
+  }
+
+  c.streets.forEach(function(s){
+    var line=el('line',{x1:s.x1,y1:s.y1,x2:s.x2,y2:s.y2,stroke:selected.has(s.id)?'#E24B4A':s.color,'stroke-width':s.w,'stroke-linecap':'round'});
+    line.classList.add('street');
+    line.setAttribute('data-id',s.id);
+    line.setAttribute('data-color',s.color);
+    line.addEventListener('click',function(){
+      if(deployed)return;
+      var id=this.getAttribute('data-id');
+      if(selected.has(id)){selected.delete(id);this.setAttribute('stroke',s.color);}
+      else{selected.add(id);this.setAttribute('stroke','#E24B4A');}
+      updatePanel();
+    });
+    svg.appendChild(line);
+    var mx=(s.x1+s.x2)/2,my=(s.y1+s.y2)/2;
+    var horiz=Math.abs(s.y2-s.y1)<Math.abs(s.x2-s.x1);
+    svg.appendChild(txt(mx,horiz?my-9:my,s.name,8,'#5F5E5A','middle',horiz?null:('-90,'+mx+','+my)));
+  });
+
+  var ag=el('g',{});
+  ag.appendChild(el('rect',{x:c.ambX-16,y:c.ambY-10,width:32,height:20,rx:3,fill:'#EF9F27',stroke:'white','stroke-width':1.5}));
+  var at=el('text',{x:c.ambX,y:c.ambY+4,'font-size':8,fill:'white','text-anchor':'middle','font-family':'sans-serif','font-weight':600});
+  at.textContent='AMB';at.style.pointerEvents='none';
+  ag.appendChild(at);svg.appendChild(ag);
+
+  c.robots.forEach(function(rb){
+    var col=rb.s==='incident'?'#E24B4A':rb.s==='warning'?'#BA7517':'#1D9E75';
+    var tcol=rb.s==='incident'?'#A32D2D':rb.s==='warning'?'#854F0B':'#0F6E56';
+    var r2=rb.s==='incident'?8:7;
+    var g=el('g',{'data-id':rb.id,'data-streets':rb.streets.join(',')});
+    g.appendChild(el('circle',{cx:rb.x,cy:rb.y,r:r2,fill:col,stroke:'white','stroke-width':1.5}));
+    var t2=el('text',{x:rb.x,y:rb.y-11,'font-size':8,fill:tcol,'text-anchor':'middle','font-family':'sans-serif'});
+    if(rb.s==='incident')t2.setAttribute('font-weight','600');
+    t2.textContent=rb.id;t2.style.pointerEvents='none';
+    g.appendChild(t2);svg.appendChild(g);
+  });
+
+  var legData=[{col:'#1D9E75',label:'nominal',rect:false},{col:'#BA7517',label:'warning',rect:false},{col:'#E24B4A',label:'incident',rect:false},{col:'#EF9F27',label:'ambulance',rect:true},{col:'#E24B4A',label:'selected street',rect:true,line:true}];
+  var legBg=el('rect',{x:5,y:430,width:310,height:22,rx:4,fill:'white','fill-opacity':.88});
+  svg.appendChild(legBg);
+  var lx=14;
+  legData.forEach(function(l){
+    if(l.line){
+      svg.appendChild(el('rect',{x:lx,y:436,width:20,height:5,rx:2,fill:l.col}));lx+=24;
+    } else if(l.rect){
+      svg.appendChild(el('rect',{x:lx,y:437,width:13,height:8,rx:2,fill:l.col}));lx+=17;
+    } else {
+      svg.appendChild(el('circle',{cx:lx+5,cy:441,r:5,fill:l.col}));lx+=13;
+    }
+    var lt=el('text',{x:lx+2,y:445,'font-size':9,fill:'#5F5E5A','font-family':'sans-serif','text-anchor':'start'});
+    lt.textContent=l.label;lt.style.pointerEvents='none';
+    svg.appendChild(lt);lx+=l.label.length*5.5+10;
+  });
+}
+
+function getRobotsOnSelected(){
+  var c=cities[currentCity],robots=[];
+  c.robots.forEach(function(rb){
+    rb.streets.forEach(function(s){
+      if(selected.has(s)&&robots.indexOf(rb.id)===-1)robots.push(rb.id);
+    });
+  });
+  return robots;
+}
+
+function updatePanel(){
+  var tags=document.getElementById('street-tags');
+  var rc=document.getElementById('robot-count');
+  var btn=document.getElementById('gbtn');
+  var c=cities[currentCity];
+  if(selected.size===0){
+    tags.innerHTML='<span class="empty">No streets selected</span>';
+    rc.textContent='';
+    btn.className='gbtn idle';
+    document.getElementById('btxt').textContent='Select streets first';
+    return;
+  }
+  var html='';
+  selected.forEach(function(id){
+    var s=c.streets.find(function(s){return s.id===id});
+    html+='<span class="stag">'+(s?s.name:id)+'<span class="x" data-id="'+id+'">&times;</span></span>';
+  });
+  tags.innerHTML=html;
+  tags.querySelectorAll('.x').forEach(function(x){
+    x.addEventListener('click',function(){
+      var id=x.getAttribute('data-id');
+      selected.delete(id);
+      var line=document.querySelector('[data-id="'+id+'"].street');
+      if(line){var s=c.streets.find(function(s){return s.id===id});if(s)line.setAttribute('stroke',s.color);}
+      updatePanel();
+    });
+  });
+  var robots=getRobotsOnSelected();
+  rc.textContent=robots.length+' robot'+(robots.length!==1?'s':'')+' on selected streets: '+robots.join(', ');
+  btn.className='gbtn armed';
+  document.getElementById('btxt').textContent='Halt '+robots.length+' robot'+(robots.length!==1?'s':'');
+}
+
+document.getElementById('gbtn').addEventListener('click',function(){
+  if(deployed||selected.size===0)return;
+  var robots=getRobotsOnSelected();
+  document.getElementById('ov-body').textContent='Halt command broadcasts to '+robots.length+' robot'+(robots.length!==1?'s':'')+' ('+robots.join(', ')+') on selected streets immediately. This cannot be undone.';
+  document.getElementById('ov').classList.add('show');
+});
+
+function deploy(){
+  document.getElementById('ov').classList.remove('show');
+  deployed=true;
+  var robots=getRobotsOnSelected();
+  var btn=document.getElementById('gbtn');
+  btn.className='gbtn ok';
+  document.getElementById('bico').textContent='✓';
+  document.getElementById('btxt').textContent='Geofence deployed — '+robots.length+' halted';
+  document.getElementById('resetbtn').style.display='block';
+  document.querySelectorAll('.street').forEach(function(s){
+    if(selected.has(s.getAttribute('data-id')))s.setAttribute('stroke','#888780');
+  });
+  robots.forEach(function(rid,i){
+    var g=document.querySelector('[data-id="'+rid+'"]');
+    if(!g)return;
+    setTimeout(function(){
+      var c2=g.querySelector('circle'),t=g.querySelector('text');
+      if(c2)c2.setAttribute('fill','#888780');
+      if(t)t.setAttribute('fill','#888780');
+    },i*100);
+  });
+  var now=new Date(),t=now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
+  var streets=[];
+  selected.forEach(function(id){var s=cities[currentCity].streets.find(function(s){return s.id===id});if(s)streets.push(s.name);});
+  var e=document.createElement('div');e.className='le';
+  e.innerHTML='<span style="flex-shrink:0;color:#888780">'+t+'</span><span class="lm g">Geofence deployed — '+robots.length+' robots halted on '+streets.join(', ')+'</span>';
+  document.getElementById('log').insertBefore(e,document.getElementById('log').firstChild);
+}
+
+function resetDemo(){
+  deployed=false;selected.clear();
+  document.getElementById('resetbtn').style.display='none';
+  renderCity();updatePanel();
+}
+
+renderCity();
+</script>
 </body>
 </html>
