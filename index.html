@@ -158,19 +158,27 @@
 
   <div class="projects-grid" id="projects-grid">
 
-    <!-- RISC-V SIMD — featured, dual links -->
-    <div class="proj-card featured" data-tags="fpga verilog c python">
+    <!-- RISC-V SIMD -->
+    <a class="proj-card" href="https://github.com/markchauhan/cpe361" target="_blank" data-tags="fpga verilog c python">
       <div class="proj-header">
         <span class="proj-cat">Computer Architecture · Verilog · FPGA</span>
         <div class="proj-btns">
-          <a href="https://github.com/markchauhan/cpe361" target="_blank" class="proj-link-btn">GitHub ↗</a>
-          <a href="Final_Project_Report.pdf" target="_blank" class="proj-link-btn paper-btn">Paper ↗</a>
+          <span class="proj-link-btn">GitHub ↗</span>
+          <a href="Final_Project_Report.pdf" target="_blank" class="proj-link-btn paper-btn" onclick="event.stopPropagation()">Paper ↗</a>
         </div>
       </div>
       <h3>RISC-V Processor with Custom SIMD Instructions</h3>
       <p>Pipelined RISC-V processor in Verilog extended with custom SIMD vector instructions (vdot, vadd, vmul, vsub, vdiv) targeting matrix multiplication. Features 128-bit vector registers, dual ALU architecture (scalar + vector), five-stage pipeline. Verified on Terasic DE2-115 FPGA at 50MHz with automated Python testing against numpy. Achieved up to <strong>5× speedup</strong> over scalar execution.</p>
       <div class="chips"><span>Verilog</span><span>RISC-V</span><span>SIMD</span><span>FPGA</span><span>Pipeline</span><span>Icarus Verilog</span><span>GTKWave</span><span>Python</span></div>
-    </div>
+    </a>
+
+    <!-- FPGA PID Controller -->
+    <a class="proj-card" href="https://github.com/markchauhan/fpga-pi-controller" target="_blank" data-tags="fpga verilog">
+      <div class="proj-header"><span class="proj-cat">Control Systems · Verilog · FPGA</span><span class="proj-arrow">↗</span></div>
+      <h3>Fast PID Feedback Controller</h3>
+      <p>Real-time PID control loop in Verilog — 5-stage pipeline, <strong>50ns latency at 100MHz</strong>. Fixed-point Q8.8 arithmetic, anti-windup integrator, synthesized with Yosys (590 cells, 0 errors). Applicable to laser stabilization, motor drives, and optical phase control.</p>
+      <div class="chips"><span>Verilog</span><span>Fixed-Point</span><span>Pipeline</span><span>Anti-Windup</span><span>iVerilog</span><span>Yosys</span></div>
+    </a>
 
     <!-- Intelligent Motor Driver -->
     <a class="proj-card" href="https://github.com/markchauhan/me333" target="_blank" data-tags="c embedded">
