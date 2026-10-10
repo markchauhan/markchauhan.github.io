@@ -159,7 +159,7 @@
   <div class="projects-grid" id="projects-grid">
 
     <!-- RISC-V SIMD -->
-    <a class="proj-card" href="https://github.com/markchauhan/cpe361" target="_blank" data-tags="fpga verilog c python">
+    <a class="proj-card" href="https://github.com/markchauhan/cpe361" target="_blank" data-tags="fpga verilog python">
       <div class="proj-header"><span class="proj-cat">Computer Architecture · Verilog · FPGA</span><span class="proj-arrow">↗</span></div>
       <h3>RISC-V Processor with Custom SIMD Instructions</h3>
       <p>Pipelined RISC-V processor in Verilog with custom SIMD vector instructions (vdot, vadd, vmul, vsub, vdiv) targeting matrix multiplication. 128-bit vector registers, dual ALU architecture, five-stage pipeline. Verified on Terasic DE2-115 FPGA at 50MHz with automated Python testing against numpy. Achieved up to <strong>5× speedup</strong> over scalar execution.</p>
@@ -190,11 +190,11 @@
     </a>
 
     <!-- Intelligent Motor Driver -->
-    <a class="proj-card" href="https://github.com/markchauhan/me333" target="_blank" data-tags="c embedded">
+    <a class="proj-card" href="https://github.com/markchauhan/me333" target="_blank" data-tags="c embedded python">
       <div class="proj-header"><span class="proj-cat">Control Systems · C</span><span class="proj-arrow">↗</span></div>
       <h3>Intelligent Motor Driver</h3>
-      <p>Closed-loop motor control via PC UI over USB. PI position and current controllers, quadrature encoder feedback, real-time interactive tuning. MATLAB validated step response.</p>
-      <div class="chips"><span>C</span><span>PI Controller</span><span>Encoders</span><span>Current Sensing</span><span>MATLAB</span></div>
+      <p>Nested-loop DC motor controller in C on a PIC32 (NU32DIP). An inner PI current loop and outer PID position loop run in timer interrupts, with INA219 current sensing over I²C and encoder position feedback. A Python serial client tunes gains live, loads step and cubic trajectories, and plots tracking against the reference.</p>
+      <div class="chips"><span>C</span><span>PIC32</span><span>PID / PI Control</span><span>Timer ISRs</span><span>I²C</span><span>Python</span></div>
     </a>
 
     <!-- Advanced Mechatronics -->
@@ -254,7 +254,7 @@
     </div>
 
     <!-- Audio Compression -->
-    <a class="proj-card" href="https://github.com/markchauhan/ee202" target="_blank" data-tags="python ml">
+    <a class="proj-card" href="https://github.com/markchauhan/ee202" target="_blank" data-tags="">
       <div class="proj-header"><span class="proj-cat">Signal Processing · MATLAB</span><span class="proj-arrow">↗</span></div>
       <h3>Audio Compression Algorithm</h3>
       <p>Frequency-domain audio compression in MATLAB. Swept cutoff frequency to find optimal confidence threshold (~0.93 at 3kHz). Validated against reference signals.</p>
