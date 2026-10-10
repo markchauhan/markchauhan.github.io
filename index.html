@@ -257,24 +257,24 @@
     <a class="proj-card" href="https://github.com/markchauhan/ee202" target="_blank" data-tags="">
       <div class="proj-header"><span class="proj-cat">Signal Processing · MATLAB</span><span class="proj-arrow">↗</span></div>
       <h3>Audio Compression Algorithm</h3>
-      <p>Frequency-domain audio compression in MATLAB. Swept cutoff frequency to find optimal confidence threshold (~0.93 at 3kHz). Validated against reference signals.</p>
-      <div class="chips"><span>MATLAB</span><span>DSP</span><span>FFT</span><span>Signal Processing</span></div>
+      <p>Tested how much of a speech recording's spectrum can be removed before a speech-to-text model fails. Zeroed FFT bins above a swept cutoff in MATLAB and tracked wav2vec 2.0 transcription confidence, which held near 0.93 down to about 3 kHz.</p>
+      <div class="chips"><span>MATLAB</span><span>FFT</span><span>DSP</span><span>Speech Recognition</span></div>
     </a>
 
     <!-- Machine Dynamics -->
-    <a class="proj-card" href="https://github.com/markchauhan/me314" target="_blank" data-tags="python mechanical">
-      <div class="proj-header"><span class="proj-cat">Simulation · Python</span><span class="proj-arrow">↗</span></div>
+    <div class="proj-card no-link" data-tags="python mechanical">
+      <div class="proj-header"><span class="proj-cat">Simulation · Python</span></div>
       <h3>Machine Dynamics Simulations</h3>
-      <p>Double pendulum and biomechanical split simulations via Lagrangian mechanics. Animated in Python/Colab with real-time multi-body dynamics rendering.</p>
-      <div class="chips"><span>Python</span><span>Lagrangian Mechanics</span><span>Simulation</span></div>
-    </a>
+      <p>Simulated a double pendulum and a two-leg biped model by deriving the Euler-Lagrange equations symbolically with SymPy, including constraint forces through Lagrange multipliers, then integrating numerically and animating the motion.</p>
+      <div class="chips"><span>Python</span><span>SymPy</span><span>Lagrangian Mechanics</span><span>Simulation</span></div>
+    </div>
 
     <!-- Gear Transmission -->
     <a class="proj-card" href="https://github.com/markchauhan/me315" target="_blank" data-tags="mechanical">
-      <div class="proj-header"><span class="proj-cat">Mechanical Design · CAD / FEA</span><span class="proj-arrow">↗</span></div>
-      <h3>Three-Shaft Gear Transmission</h3>
-      <p>Gear transmission reducing 2700→400 rpm at 60kW. Full force analysis, stress calculations, bearing selection for 99% reliability over a 5-year lifespan.</p>
-      <div class="chips"><span>SolidWorks</span><span>FEA</span><span>Gear Design</span><span>Stress Analysis</span></div>
+      <div class="proj-header"><span class="proj-cat">Mechanical Design · Siemens NX</span><span class="proj-arrow">↗</span></div>
+      <h3>Two-Stage Gear Transmission</h3>
+      <p>Team design of a 60 kW gear reduction from 2700 to 400 rpm, landing within 0.28% of the target ratio. I designed the input shaft system: tooth forces, bending and torsion, Goodman fatigue analysis and SKF bearing selection for 99% reliability over a 5-year life.</p>
+      <div class="chips"><span>Siemens NX</span><span>Gear Design</span><span>Fatigue Analysis</span><span>Bearing Selection</span></div>
     </a>
 
     <!-- CNC -->
