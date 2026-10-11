@@ -169,9 +169,9 @@
     <!-- FPGA PID Controller -->
     <a class="proj-card" href="https://github.com/markchauhan/fpga-pi-controller" target="_blank" data-tags="fpga verilog">
       <div class="proj-header"><span class="proj-cat">Control Systems · Verilog · FPGA</span><span class="proj-arrow">↗</span></div>
-      <h3>Fast PID Feedback Controller</h3>
-      <p>Real-time PID control loop in Verilog — 5-stage pipeline, <strong>50ns latency at 100MHz</strong>. Fixed-point Q8.8 arithmetic, anti-windup integrator, synthesized with Yosys (590 cells, 0 errors). Applicable to laser stabilization, motor drives, and optical phase control.</p>
-      <div class="chips"><span>Verilog</span><span>Fixed-Point</span><span>Pipeline</span><span>Anti-Windup</span><span>iVerilog</span><span>Yosys</span></div>
+      <h3>FPGA PID Controller</h3>
+      <p>PID control loop in Verilog with Q8.8 fixed-point gains and <strong>5-cycle worst-case latency</strong> (50ns at a 100MHz clock). Saturating arithmetic throughout, a low-pass filtered derivative and an anti-windup integrator. Directed tests caught three bugs in my first version (multiply truncation, integrator wrap and rounding of small errors), now fixed and documented with before-and-after results in the README.</p>
+      <div class="chips"><span>Verilog</span><span>Fixed-Point</span><span>Anti-Windup</span><span>Icarus Verilog</span><span>Yosys</span></div>
     </a>
 
     <!-- FPGA ADC/DAC Interface -->
