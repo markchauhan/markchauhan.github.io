@@ -159,10 +159,10 @@
   <div class="projects-grid" id="projects-grid">
 
     <!-- RISC-V SIMD -->
-    <a class="proj-card" href="https://github.com/markchauhan/cpe361" target="_blank" data-tags="fpga verilog python">
+    <a class="proj-card" href="risc-v-simd-report.pdf" target="_blank" data-tags="fpga verilog python">
       <div class="proj-header"><span class="proj-cat">Computer Architecture · Verilog · FPGA</span><span class="proj-arrow">↗</span></div>
       <h3>RISC-V Processor with Custom SIMD Instructions</h3>
-      <p>Pipelined RISC-V processor in Verilog with custom SIMD vector instructions (vdot, vadd, vmul, vsub, vdiv) targeting matrix multiplication. 128-bit vector registers, dual ALU architecture, five-stage pipeline. Verified on Terasic DE2-115 FPGA at 50MHz with automated Python testing against numpy. Achieved up to <strong>5× speedup</strong> over scalar execution.</p>
+      <p>Team of three. Extended a five-stage pipelined RV32I processor in Verilog with custom vector instructions (vdot, vadd, vmul, vsub, vdiv, vli) on 128-bit registers, targeting matrix multiplication. I co-designed the instructions, built the fetch and decode stages, and wrote the assembler. Ran on a Terasic DE2-115 FPGA at 50MHz, verified with automated Python tests against NumPy, with up to <strong>5× speedup</strong> over scalar execution. Link opens the project report.</p>
       <div class="chips"><span>Verilog</span><span>RISC-V</span><span>SIMD</span><span>FPGA</span><span>Pipeline</span><span>Python</span></div>
     </a>
 
@@ -243,14 +243,6 @@
       <h3>P&G IoT Consumer Product</h3>
       <p>Senior capstone with Procter & Gamble. Led embedded systems integration and data tracking for an IoT-enabled consumer electronics product.</p>
       <div class="chips"><span>IoT</span><span>Embedded Systems</span><span>C</span><span>Sensors</span></div>
-    </div>
-
-    <!-- Matrix Mult -->
-    <div class="proj-card no-link" data-tags="fpga verilog">
-      <div class="proj-header"><span class="proj-cat">Hardware Accelerator · Verilog</span></div>
-      <h3>Matrix Multiplication on FPGA</h3>
-      <p>Accelerated matrix multiplication on RISC-V using custom vector instructions in Verilog. Synthesized with Xcelium and Genus for timing/area reports.</p>
-      <div class="chips"><span>Verilog</span><span>FPGA</span><span>RISC-V</span><span>Xcelium</span><span>Genus</span></div>
     </div>
 
     <!-- Audio Compression -->
