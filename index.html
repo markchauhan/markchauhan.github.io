@@ -277,21 +277,21 @@
       <div class="chips"><span>Siemens NX</span><span>FEA</span><span>SolidWorks</span><span>Sand Casting</span><span>Milling</span></div>
     </div>
 
-    <!-- Ergodic Active Search -->
-    <div class="proj-card no-link" data-tags="robotics ml python">
-      <div class="proj-header"><span class="proj-cat">Active Learning · Robotics · Python</span></div>
-      <h3>Ergodic Active Search</h3>
-      <p>A sensor agent uses ergodic control and Bayesian inference to actively search for a hidden object — steering its trajectory to match a Fourier-decomposed belief distribution, maximizing information gain over time.</p>
-      <div class="chips"><span>Python</span><span>Ergodic Control</span><span>Bayesian Inference</span><span>Active Learning</span><span>Optimal Control</span></div>
-    </div>
+    <!-- Ergodic Trajectory Optimization -->
+    <a class="proj-card" href="https://github.com/markchauhan/me455" target="_blank" data-tags="robotics python">
+      <div class="proj-header"><span class="proj-cat">Optimal Control · Robotics · Python</span><span class="proj-arrow">↗</span></div>
+      <h3>Ergodic Trajectory Optimization</h3>
+      <p>Optimized a differential-drive robot's path so the time it spends in each region matches a target distribution. The target and the trajectory are compared through Fourier cosine coefficients, and the ergodic metric is minimized with PyTorch autodiff, falling from about 1.0 to under 0.03 across three runs.</p>
+      <div class="chips"><span>Python</span><span>PyTorch</span><span>Ergodic Control</span><span>Optimal Control</span></div>
+    </a>
 
     <!-- iLQR -->
-    <div class="proj-card no-link" data-tags="robotics python">
-      <div class="proj-header"><span class="proj-cat">Optimal Control · Python</span></div>
+    <a class="proj-card" href="https://github.com/markchauhan/me455" target="_blank" data-tags="robotics python">
+      <div class="proj-header"><span class="proj-cat">Optimal Control · Python</span><span class="proj-arrow">↗</span></div>
       <h3>iLQR Trajectory Optimization</h3>
-      <p>Implemented iterative Linear Quadratic Regulator (iLQR) from scratch for a nonlinear unicycle system. Derived Jacobians analytically, ran forward-backward passes to compute descent directions, and swept cost weights to analyze trajectory sensitivity.</p>
+      <p>Iterative LQR for a unicycle robot tracking a reference path, built on a course template. Derived the dynamics Jacobians and cost gradients, solved the linearized problem as a boundary value problem at each iteration, and used an Armijo line search. Cost fell from 2,843 to 44.6 in 39 iterations.</p>
       <div class="chips"><span>Python</span><span>iLQR</span><span>Optimal Control</span><span>Trajectory Optimization</span><span>Nonlinear Systems</span></div>
-    </div>
+    </a>
 
   </div>
 
