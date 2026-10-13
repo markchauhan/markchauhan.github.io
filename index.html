@@ -147,6 +147,7 @@
     <button class="filter-btn active" data-filter="all">All</button>
     <button class="filter-btn" data-filter="c">C</button>
     <button class="filter-btn" data-filter="c++">C++</button>
+    <button class="filter-btn" data-filter="cuda">CUDA</button>
     <button class="filter-btn" data-filter="fpga">FPGA</button>
     <button class="filter-btn" data-filter="verilog">Verilog</button>
     <button class="filter-btn" data-filter="embedded">Embedded</button>
@@ -158,6 +159,14 @@
   </div>
 
   <div class="projects-grid" id="projects-grid">
+
+    <!-- CUDA Kernels -->
+    <a class="proj-card" href="https://github.com/markchauhan/cuda-kernels" target="_blank" data-tags="cuda c++">
+      <div class="proj-header"><span class="proj-cat">GPU Computing · CUDA · C++</span><span class="proj-arrow">↗</span></div>
+      <h3>CUDA Kernels</h3>
+      <p>GPU kernels in CUDA C++17, benchmarked on an NVIDIA Tesla T4. I optimized a parallel reduction from <strong>59 to 227 GB/s, about 70% of peak memory bandwidth</strong>, by having each thread accumulate privately in a grid-stride loop before one shared-memory tree per block, and by sizing the grid to fill every SM. Device memory is managed with an RAII wrapper, kernels are tested against CPU references with Google Test and compute-sanitizer, and CI builds every push.</p>
+      <div class="chips"><span>CUDA</span><span>C++17</span><span>Shared Memory</span><span>Parallel Reduction</span><span>CMake</span><span>Google Test</span></div>
+    </a>
 
     <!-- RISC-V SIMD -->
     <a class="proj-card" href="risc-v-simd-report.pdf" target="_blank" data-tags="fpga verilog python">
