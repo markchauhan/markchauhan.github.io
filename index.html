@@ -188,14 +188,14 @@
     <a class="proj-card" href="https://github.com/markchauhan/fpga-adc-dac-interface" target="_blank" data-tags="fpga verilog embedded">
       <div class="proj-header"><span class="proj-cat">Embedded Systems · Verilog · FPGA</span><span class="proj-arrow">↗</span></div>
       <h3>SPI ADC/DAC Interface on FPGA</h3>
-      <p>SPI master and controllers in Verilog, written without IP cores, that read a 12-bit sample from an MCP3204 ADC and write it to an MCP4921 DAC over two SPI buses. A protocol-accurate testbench showed my first 16-bit ADC frame returned only 6 of 12 data bits. Fixed with a 24-bit frame and verified on all four channels.</p>
+      <p>SPI master and controllers in Verilog, written without IP cores, that read a 12-bit sample from an MCP3204 ADC and write it to an MCP4921 DAC over two SPI buses. A protocol-accurate testbench showed my first 16-bit ADC frame returned only 6 of 12 data bits. Fixed with a 24-bit frame and verified in simulation on all four channels.</p>
       <div class="chips"><span>Verilog</span><span>SPI</span><span>ADC</span><span>DAC</span><span>State Machine</span><span>iVerilog</span></div>
     </a>
 
     <a class="proj-card" href="https://github.com/markchauhan/sensor-fusion" target="_blank" data-tags="c++">
       <div class="proj-header"><span class="proj-cat">Systems · C++ · Real-Time</span><span class="proj-arrow">↗</span></div>
       <h3>Real-Time Sensor Fusion Pipeline</h3>
-      <p>Lock-free SPSC ring buffer in C++17 processing simulated IMU sensor streams. Dedicated producer/consumer threads with acquire/release memory ordering, cache-line-aligned atomics to eliminate false sharing, and online EWMA + Welford variance computed in O(1) per sample. Benchmarked at <strong>~200 packets/sec, p50 latency 0.56µs</strong> on a shared VM.</p>
+      <p>Lock-free SPSC ring buffer in C++17 processing simulated IMU sensor streams. Dedicated producer/consumer threads with acquire/release memory ordering, cache-line-aligned atomics to eliminate false sharing, and online EWMA + Welford variance computed in O(1) per sample. On a 200 Hz simulated stream, median producer-to-consumer latency was <strong>0.56µs</strong> on a shared VM, with the tail set by OS scheduling.</p>
       <div class="chips"><span>C++17</span><span>Lock-Free</span><span>Atomics</span><span>Multithreading</span><span>SPSC</span><span>Real-Time</span></div>
     </a>
 
