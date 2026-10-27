@@ -195,8 +195,8 @@
     <a class="proj-card" href="https://github.com/markchauhan/sensor-fusion" target="_blank" data-tags="c++">
       <div class="proj-header"><span class="proj-cat">Systems · C++ · Real-Time</span><span class="proj-arrow">↗</span></div>
       <h3>Real-Time Sensor Fusion Pipeline</h3>
-      <p>Lock-free SPSC ring buffer in C++17 processing simulated IMU sensor streams. Dedicated producer/consumer threads with acquire/release memory ordering, cache-line-aligned atomics to eliminate false sharing, and online EWMA + Welford variance computed in O(1) per sample. On a 200 Hz simulated stream, median producer-to-consumer latency was <strong>0.56µs</strong> on a shared VM, with the tail set by OS scheduling.</p>
-      <div class="chips"><span>C++17</span><span>Lock-Free</span><span>Atomics</span><span>Multithreading</span><span>SPSC</span><span>Real-Time</span></div>
+      <p>Lock-free SPSC ring buffer in C++17 carrying simulated IMU samples between dedicated producer/consumer threads, with acquire/release memory ordering, cache-line-aligned atomics and online EWMA + Welford variance in O(1) per sample. Latency goes into a fixed-memory histogram, and recorded streams replay bit-exact. Median producer-to-consumer latency is <strong>0.43µs</strong> and throughput is <strong>7.7M samples/s</strong> on an Apple Silicon laptop, verified race-free with ThreadSanitizer.</p>
+      <div class="chips"><span>C++17</span><span>Lock-Free</span><span>Atomics</span><span>Multithreading</span><span>SPSC</span><span>ThreadSanitizer</span></div>
     </a>
 
     <!-- Intelligent Motor Driver -->
